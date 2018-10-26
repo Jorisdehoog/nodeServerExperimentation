@@ -16,7 +16,6 @@
 
 <body>
     <h1>Hello there</h1>
-    <p>Api test lol</p>
     <p id="showtime"></p>
 
   <script>
@@ -24,17 +23,36 @@
   </script>
   <script>
     // fetch the time from the api and display
-    url = "localhost:8000";
-    console.log('are we getting here? Why does fetch fail? is the node server not runnigng?')
-    var x = fetch(url).then(function(response){
-        if(response.ok){
-            console.log('response was fine')
-        }
-        console.log(response);
-        return response.json();
-    }).then(function(myJson){
-        console.log(JSON.stringify(myJson));
-    })
+    // using postman i verified that my api returns the correct resource. i need to fix my call. 
+
+
+    var data = null;
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = false;
+
+    xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+        console.log(this.responseText);
+    }
+    });
+
+    xhr.open("GET", "http://localhost:8000");
+    // xhr.setRequestHeader("cache-control", "no-cache");
+    // xhr.setRequestHeader("Postman-Token", "9247275e-e2a1-4539-b42c-ffde7f1939d9");
+
+    xhr.send(data);
+
+
+    // url = "localhost:8000";
+    // var x = fetch(url).then(function(response){
+    //     if(response.ok){
+    //         console.log('response was fine')
+    //     }
+    //     console.log(response);
+    //     return response.json();
+    // }).then(function(myJson){
+    //     console.log(JSON.stringify(myJson));
+    // })
   </script>
 </body>
 </html>
