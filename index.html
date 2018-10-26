@@ -10,15 +10,31 @@
 
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 
+  <!-- <script src="scripts/timeServer.js"></script> -->
+
 </head>
 
 <body>
     <h1>Hello there</h1>
     <p>Api test lol</p>
-  <script src="js/scripts.js"></script>
+    <p id="showtime"></p>
 
   <script>
-      
+        document.getElementById('showtime').innerHTML = 'Hello there';
+  </script>
+  <script>
+    // fetch the time from the api and display
+    url = "localhost:8000";
+    console.log('are we getting here? Why does fetch fail? is the node server not runnigng?')
+    var x = fetch(url).then(function(response){
+        if(response.ok){
+            console.log('response was fine')
+        }
+        console.log(response);
+        return response.json();
+    }).then(function(myJson){
+        console.log(JSON.stringify(myJson));
+    })
   </script>
 </body>
 </html>
