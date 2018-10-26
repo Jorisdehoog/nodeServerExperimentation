@@ -1,15 +1,12 @@
-// var net = require('net')
 var http = require('http')
-// var cors = require('cors')
 
-// var app = http();
-// app.use(cors());
+// Define the port used
+const port = 8000;
 
 function zeroFill (i) {
   return (i < 10 ? '0' : '') + i
 }
 
-console.log('hello from js')
 function now () {
   var d = new Date()
   return d.getFullYear() + '-' +
@@ -30,16 +27,18 @@ var server = http.createServer(function(req, res){
 	res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
     res.setHeader('Access-Control-Allow-Headers', 'req.header.origin');
 
+    // write 200-message to reponse
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end(time);
-    console.log('hello there')
 });
 
-server.listen(8000, (err)=>{
+server.listen(port, (err)=>{
     if (err) {
         console.log('error')
     }
 })
+
+console.log("Server listening on port: " + port)
 
 
 
